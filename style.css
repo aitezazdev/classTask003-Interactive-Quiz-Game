@@ -1,32 +1,109 @@
-*{
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
-h1{
+body {
+    background-color: #b3b3b3;
+}
+
+header {
+    background-color: #4a90e2;
+    padding: 20px 0;
+    color: #fff;
     text-align: center;
-    margin: 20px 0;
 }
 
-#main-box{
-    width: 70%;
+h1 {
+    font-size: 2.5rem;
+}
+
+#main-box {
+    width: 80%;
+    max-width: 600px;
     margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+#question {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#choices {
     display: flex;
-    gap: 20px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
 }
 
-#main-box p{
-    font-size: 22px;
-}
-
-#main-box button{
-    padding: 10px 20px;
+#choices button {
+    padding: 15px;
+    width: 48%;
     border-radius: 5px;
     border: none;
-    background-color: #e8d34a;
+    background-color: #4a90e2;
+    color: #fff;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#choices button:hover {
+    background-color: #357abd;
+}
+
+#score-next {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#score-next button {
+    padding: 10px 20px;
+    width: 100px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#score {
+    background-color: #ff6f61;
+}
+
+#score:hover {
+    background-color: #ff4d40;
+}
+
+#next {
+    background-color: #4caf50;
+}
+
+#next:hover {
+    background-color: #388e3c;
+}
+
+
+
+@media screen and (max-width: 550px) {
+    #choices button {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    #score-next {
+        justify-content: space-around;
+    }
 }
