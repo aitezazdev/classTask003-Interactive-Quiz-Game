@@ -17,10 +17,10 @@ var scoreElement = document.getElementById("score");
 
 var currentQuestionIndex = 0;
 var score = 0;
-var btnSelected = false;
+var btnClicked = false;
 
 function displayQuestion() {
-  btnSelected = false;
+  btnClicked = false;
   var currentQuestion = data[currentQuestionIndex];
   question.textContent = currentQuestion.question;
 
@@ -53,7 +53,7 @@ function displayQuestion() {
   }
 
 function checkAnswer(selectedOption) {
-  btnSelected = true;
+  btnClicked = true;
   if (selectedOption === data[currentQuestionIndex].answer) {
     score++;
     alert("correct");
@@ -62,17 +62,18 @@ function checkAnswer(selectedOption) {
   }
   scoreElement.textContent = "Score: " + score;
 
-  // Disable multipe clicks
-  if (btnSelected) {
-    document.getElementById("choice1").style.cursor = "not-allowed";
-    document.getElementById("choice2").style.cursor = "not-allowed";
-    document.getElementById("choice3").style.cursor = "not-allowed";
-    document.getElementById("choice4").style.cursor = "not-allowed";
-
+  if (btnClicked) {
+    // cursor not allowed
     document.getElementById("choice1").disabled = true;
     document.getElementById("choice2").disabled = true;
     document.getElementById("choice3").disabled = true;
     document.getElementById("choice4").disabled = true;
+    
+    // disable btn after 1 click so user cannot select one mcq multipe times
+    document.getElementById("choice1").style.cursor = "not-allowed";
+    document.getElementById("choice2").style.cursor = "not-allowed";
+    document.getElementById("choice3").style.cursor = "not-allowed";
+    document.getElementById("choice4").style.cursor = "not-allowed";
   }
 }
 
