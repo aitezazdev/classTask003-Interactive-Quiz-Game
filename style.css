@@ -69,26 +69,23 @@ h1 {
 }
 
 #score-next button {
-    padding: 10px 20px;
+    padding: 12px 20px;
     width: 100px;
-    font-size: 1rem;
+    font-size: 16px;
     border-radius: 5px;
     border: none;
     color: #fff;
-    cursor: pointer;
     transition: background-color 0.3s;
 }
 
 #score {
     background-color: #ff6f61;
-}
-
-#score:hover {
-    background-color: #ff4d40;
+    cursor: not-allowed;
 }
 
 #next {
     background-color: #4caf50;
+    cursor: pointer;
 }
 
 #next:hover {
