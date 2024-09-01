@@ -1,12 +1,12 @@
 var data = [
-  { question: "what is 2 + 2?", choices: ["3", "4", "5", "6"], answer: 1 },
+  { question: "1. what is 2 + 2?", choices: ["3", "4", "5", "6"], answer: 1 },
   {
-    question: "my name is?",
+    question: "2. my name is?",
     choices: ["zaz", "khan", "bro", "aitezaz"],
     answer: 3,
   },
   {
-    question: "best film?",
+    question: "2. best film?",
     choices: ["The dark knight", "Interstellar", "Inception", "no one"],
     answer: 0,
   },
