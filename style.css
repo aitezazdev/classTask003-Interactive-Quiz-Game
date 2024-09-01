@@ -57,10 +57,6 @@ h1 {
     transition: background-color 0.3s;
 }
 
-#choices button:hover {
-    background-color: #357abd;
-}
-
 #score-next {
     display: flex;
     justify-content: space-between;

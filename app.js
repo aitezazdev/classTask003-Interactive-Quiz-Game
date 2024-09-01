@@ -17,8 +17,10 @@ var scoreElement = document.getElementById("score");
 
 var currentQuestionIndex = 0;
 var score = 0;
+var btnSelected = false;
 
 function displayQuestion() {
+  btnSelected = false;
   var currentQuestion = data[currentQuestionIndex];
   question.textContent = currentQuestion.question;
 
@@ -33,19 +35,45 @@ function displayQuestion() {
 
   scoreElement.textContent = "Score: " + score;
 
-  if (currentQuestionIndex === data.length - 1) {
-    document.getElementById("next").innerText = "Its Over";
+  // Reset all buttons to enabled
+  document.getElementById("choice1").disabled = false;
+  document.getElementById("choice2").disabled = false;
+  document.getElementById("choice3").disabled = false;
+  document.getElementById("choice4").disabled = false;
+
+  // reset the cursor to default
+    document.getElementById("choice1").style.cursor = "pointer";
+    document.getElementById("choice2").style.cursor = "pointer";
+    document.getElementById("choice3").style.cursor = "pointer";
+    document.getElementById("choice4").style.cursor = "pointer";
+
+    if (currentQuestionIndex === data.length - 1) {
+      document.getElementById("next").innerText = "Its Over";
+    }
   }
-}
 
 function checkAnswer(selectedOption) {
+  btnSelected = true;
   if (selectedOption === data[currentQuestionIndex].answer) {
     score++;
     alert("correct");
   } else {
-    alert("wrong");
+    alert("Try Again!");
   }
   scoreElement.textContent = "Score: " + score;
+
+  // Disable multipe clicks
+  if (btnSelected) {
+    document.getElementById("choice1").style.cursor = "not-allowed";
+    document.getElementById("choice2").style.cursor = "not-allowed";
+    document.getElementById("choice3").style.cursor = "not-allowed";
+    document.getElementById("choice4").style.cursor = "not-allowed";
+
+    document.getElementById("choice1").disabled = true;
+    document.getElementById("choice2").disabled = true;
+    document.getElementById("choice3").disabled = true;
+    document.getElementById("choice4").disabled = true;
+  }
 }
 
 function nextQuestion() {
