@@ -37,6 +37,7 @@ var scoreElement = document.getElementById("score");
 
 var currentQuestionIndex = 0;
 var score = 0;
+var finalScore = null;
 var btnClicked;
 
 function displayQuestion() {
@@ -53,11 +54,7 @@ function displayQuestion() {
   document.getElementById("choice4").textContent =
     data[currentQuestionIndex].choices[3];
 
-    disableEnableBtns();
-
-  if (currentQuestionIndex === data.length - 1) {
-    document.getElementById("next").style.display = "none";
-  }
+  disableEnableBtns();
 }
 
 function checkAnswer(selectedOption) {
@@ -77,6 +74,10 @@ function nextQuestion() {
   if (currentQuestionIndex < data.length - 1) {
     currentQuestionIndex++;
     displayQuestion();
+  }else{
+    document.getElementById("main-box").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("finalScore").textContent = "Total Score : " + score;
   }
 }
 
