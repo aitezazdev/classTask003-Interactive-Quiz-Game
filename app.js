@@ -20,16 +20,6 @@ var data = [
     choices: ["Java", "Python", "C++", "JavaScript"],
     answer: 3,
   },
-  {
-    question: "4. What is the capital of France?",
-    choices: ["London", "Berlin", "Paris", "Madrid"],
-    answer: 2,
-  },
-  {
-    question: "5. Which company developed the Android operating system?",
-    choices: ["Apple", "Microsoft", "Google", "Samsung"],
-    answer: 2,
-  },
 ];
 
 var questionElement = document.getElementById("question");
@@ -68,28 +58,33 @@ function checkAnswer(selectedOption) {
   scoreElement.textContent = "Score: " + score;
 
   disableEnableBtns();
+
+  if (currentQuestionIndex < data.length - 1) {
+    currentQuestionIndex++;
+  } else {
+    showResult();
+  }
 }
 
 function nextQuestion() {
-  if (currentQuestionIndex < data.length - 1) {
-    currentQuestionIndex++;
     displayQuestion();
-  }else{
-    document.getElementById("main-box").style.display = "none";
-    document.getElementById("result").style.display = "block";
-    document.getElementById("finalScore").textContent = "Total Score : " + score;
-  }
+}
+
+function showResult() {
+  document.getElementById("main-box").style.display = "none";
+  document.getElementById("result").style.display = "block";
+  document.getElementById("finalScore").textContent = "Total Score: " + score;
 }
 
 function disableEnableBtns() {
   if (btnClicked) {
-    // cursor not allowed
+    // disable btn after 1 click so user cannot select one mcq multipe times
     document.getElementById("choice1").disabled = true;
     document.getElementById("choice2").disabled = true;
     document.getElementById("choice3").disabled = true;
     document.getElementById("choice4").disabled = true;
-
-    // disable btn after 1 click so user cannot select one mcq multipe times
+    
+    // cursor not allowed
     document.getElementById("choice1").style.cursor = "not-allowed";
     document.getElementById("choice2").style.cursor = "not-allowed";
     document.getElementById("choice3").style.cursor = "not-allowed";
