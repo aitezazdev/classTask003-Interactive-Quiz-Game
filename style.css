@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -33,10 +32,13 @@ h1 {
 }
 
 #question {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #323232;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-weight: 600; 
+    line-height: 1.4;
 }
+
 
 #choices {
     display: flex;
@@ -66,7 +68,7 @@ h1 {
 }
 
 #score-next button {
-    padding: 12px 20px;
+    padding: 12px 0;
     width: 100px;
     font-size: 16px;
     border-radius: 5px;
@@ -89,28 +91,20 @@ h1 {
     background-color: #388e3c;
 }
 
-
-
-@media screen and (max-width: 550px) {
-    #choices button {
-        width: 85%;
-        margin: 0 auto;
-    }
-
-    #score-next {
-        justify-content: space-around;
-    }
-}
-
 #result{
     width: 80%;
     max-width: 300px;
     margin: 50px auto;
-    padding: 30px;
+    padding: 50px;
     background-color: #fff;
     border-radius: 8px;
     text-align: center;
     display: none;
+}
+
+#finalScore{
+    font-size: 20px;
+    font-weight: 500;
 }
 
 #play-again{
@@ -127,4 +121,17 @@ h1 {
 
 #play-again:hover{
     background-color: #0e7625;
+}
+
+
+
+@media screen and (max-width: 550px) {
+    #choices button {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    #score-next {
+        justify-content: space-around;
+    }
 }

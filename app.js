@@ -1,22 +1,16 @@
 var data = [
   {
     question: "1. In programming, what is a 'bug'?",
-    choices: [
-      "A feature",
-      "An error or flaw",
-      "A security measure",
-      "A type of loop",
-    ],
+    choices: ["A feature", "An error or flaw", "A security measure", "A type of loop"],
     answer: 1,
   },
   {
     question: "2. Which planet is known as the Red Planet?",
-    choices: ["Venus", "Mars", "Jupiter", "Saturn"],
-    answer: 1,
+    choices: ["Mars", "Venus", "Jupiter", "Saturn"],
+    answer: 0,
   },
   {
-    question:
-      "3. Which programming language is known as the 'language of the web'?",
+    question: "3. Which programming language is known as the 'language of the web'?",
     choices: ["Java", "Python", "C++", "JavaScript"],
     answer: 3,
   },
@@ -35,29 +29,25 @@ function displayQuestion() {
   var currentQuestion = data[currentQuestionIndex];
   questionElement.textContent = currentQuestion.question;
 
-  document.getElementById("choice1").textContent =
-    data[currentQuestionIndex].choices[0];
-  document.getElementById("choice2").textContent =
-    data[currentQuestionIndex].choices[1];
-  document.getElementById("choice3").textContent =
-    data[currentQuestionIndex].choices[2];
-  document.getElementById("choice4").textContent =
-    data[currentQuestionIndex].choices[3];
+  document.getElementById("choice1").textContent = data[currentQuestionIndex].choices[0];
+  document.getElementById("choice2").textContent = data[currentQuestionIndex].choices[1];
+  document.getElementById("choice3").textContent = data[currentQuestionIndex].choices[2];
+  document.getElementById("choice4").textContent = data[currentQuestionIndex].choices[3];
 
-  disableEnableBtns();
+  changeBtnState();
 }
 
 function checkAnswer(selectedOption) {
   btnClicked = true;
   if (selectedOption === data[currentQuestionIndex].answer) {
     score++;
-    alert("correct");
+    alert("Correct");
   } else {
-    alert("Wrong!");
+    alert(`Incorrect. The correct answer is option ${data[currentQuestionIndex].answer + 1}.`);
   }
   scoreElement.textContent = "Score: " + score;
 
-  disableEnableBtns();
+  changeBtnState();
 
   if (currentQuestionIndex < data.length - 1) {
     currentQuestionIndex++;
@@ -73,10 +63,10 @@ function nextQuestion() {
 function showResult() {
   document.getElementById("main-box").style.display = "none";
   document.getElementById("result").style.display = "block";
-  document.getElementById("finalScore").textContent = "Total Score: " + score;
+  document.getElementById("finalScore").textContent = "Your Score: " + score;
 }
 
-function disableEnableBtns() {
+function changeBtnState() {
   if (btnClicked) {
     // disable btn after 1 click so user cannot select one mcq multipe times
     document.getElementById("choice1").disabled = true;
@@ -102,6 +92,13 @@ function disableEnableBtns() {
     document.getElementById("choice3").style.cursor = "pointer";
     document.getElementById("choice4").style.cursor = "pointer";
   }
+}
+function playAgain() {
+  currentQuestionIndex = 0;
+  score = 0;
+  document.getElementById("result").style.display = "none";
+  document.getElementById("main-box").style.display = "block";
+  displayQuestion();
 }
 
 displayQuestion();
