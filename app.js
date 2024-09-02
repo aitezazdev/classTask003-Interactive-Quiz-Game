@@ -1,8 +1,13 @@
 var data = [
   {
-    question: "5. In programming, what is a 'bug'?",
-    choices: ["A feature", "An error or flaw", "A security measure", "A type of loop"],
-    answer: 1
+    question: "1. In programming, what is a 'bug'?",
+    choices: [
+      "A feature",
+      "An error or flaw",
+      "A security measure",
+      "A type of loop",
+    ],
+    answer: 1,
   },
   {
     question: "2. Which planet is known as the Red Planet?",
@@ -10,33 +15,34 @@ var data = [
     answer: 1,
   },
   {
-    question: "2. Which programming language is known as the 'language of the web'?",
+    question:
+      "3. Which programming language is known as the 'language of the web'?",
     choices: ["Java", "Python", "C++", "JavaScript"],
-    answer: 3
+    answer: 3,
   },
   {
-    question: "1. What is the capital of France?",
+    question: "4. What is the capital of France?",
     choices: ["London", "Berlin", "Paris", "Madrid"],
-    answer: 2
+    answer: 2,
   },
   {
-    question: "4. Which company developed the Android operating system?",
+    question: "5. Which company developed the Android operating system?",
     choices: ["Apple", "Microsoft", "Google", "Samsung"],
-    answer: 2
+    answer: 2,
   },
 ];
 
-var question = document.getElementById("question");
+var questionElement = document.getElementById("question");
 var scoreElement = document.getElementById("score");
 
 var currentQuestionIndex = 0;
 var score = 0;
-var btnClicked = false;
+var btnClicked;
 
 function displayQuestion() {
   btnClicked = false;
   var currentQuestion = data[currentQuestionIndex];
-  question.textContent = currentQuestion.question;
+  questionElement.textContent = currentQuestion.question;
 
   document.getElementById("choice1").textContent =
     data[currentQuestionIndex].choices[0];
@@ -47,22 +53,10 @@ function displayQuestion() {
   document.getElementById("choice4").textContent =
     data[currentQuestionIndex].choices[3];
 
-  scoreElement.textContent = "Score: " + score;
-
-  // Reset all buttons to enabled
-  document.getElementById("choice1").disabled = false;
-  document.getElementById("choice2").disabled = false;
-  document.getElementById("choice3").disabled = false;
-  document.getElementById("choice4").disabled = false;
-
-  // reset the cursor to default
-  document.getElementById("choice1").style.cursor = "pointer";
-  document.getElementById("choice2").style.cursor = "pointer";
-  document.getElementById("choice3").style.cursor = "pointer";
-  document.getElementById("choice4").style.cursor = "pointer";
+    disableEnableBtns();
 
   if (currentQuestionIndex === data.length - 1) {
-    document.getElementById("next").innerText = "Its Over";
+    document.getElementById("next").style.display = "none";
   }
 }
 
@@ -76,6 +70,17 @@ function checkAnswer(selectedOption) {
   }
   scoreElement.textContent = "Score: " + score;
 
+  disableEnableBtns();
+}
+
+function nextQuestion() {
+  if (currentQuestionIndex < data.length - 1) {
+    currentQuestionIndex++;
+    displayQuestion();
+  }
+}
+
+function disableEnableBtns() {
   if (btnClicked) {
     // cursor not allowed
     document.getElementById("choice1").disabled = true;
@@ -88,13 +93,18 @@ function checkAnswer(selectedOption) {
     document.getElementById("choice2").style.cursor = "not-allowed";
     document.getElementById("choice3").style.cursor = "not-allowed";
     document.getElementById("choice4").style.cursor = "not-allowed";
-  }
-}
+  } else {
+    // Reset all buttons to enabled
+    document.getElementById("choice1").disabled = false;
+    document.getElementById("choice2").disabled = false;
+    document.getElementById("choice3").disabled = false;
+    document.getElementById("choice4").disabled = false;
 
-function nextQuestion() {
-  if (currentQuestionIndex < data.length - 1) {
-    currentQuestionIndex++;
-    displayQuestion();
+    // reset the cursor to default
+    document.getElementById("choice1").style.cursor = "pointer";
+    document.getElementById("choice2").style.cursor = "pointer";
+    document.getElementById("choice3").style.cursor = "pointer";
+    document.getElementById("choice4").style.cursor = "pointer";
   }
 }
 
