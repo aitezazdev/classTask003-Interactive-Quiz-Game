@@ -23,7 +23,7 @@ h1 {
 
 #main-box {
     width: 80%;
-    max-width: 600px;
+    width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
@@ -79,7 +79,6 @@ h1 {
 
 #score {
     background-color: #ff6f61;
-    cursor: not-allowed;
 }
 
 #next {
@@ -125,13 +124,15 @@ h1 {
 
 
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
     #choices button {
-        width: 85%;
+        width: 90%;
         margin: 0 auto;
     }
-
     #score-next {
         justify-content: space-around;
+    }
+    #main-box{
+        width: 90%;
     }
 }

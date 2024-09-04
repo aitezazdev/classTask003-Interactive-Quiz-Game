@@ -1,4 +1,4 @@
-var data = [
+var questionsData = [
   {
     question: "1. In programming, what is a 'bug'?",
     choices: ["A feature", "An error or flaw", "A security measure", "A type of loop"],
@@ -22,34 +22,38 @@ var scoreElement = document.getElementById("score");
 var currentQuestionIndex = 0;
 var score = 0;
 var finalScore = null;
-var btnClicked;
+var optionBtnClicked;
 
 function displayQuestion() {
-  btnClicked = false;
-  var currentQuestion = data[currentQuestionIndex];
+  optionBtnClicked = false;
+  changeBtnState();
+
+  var currentQuestion = questionsData[currentQuestionIndex];
   questionElement.textContent = currentQuestion.question;
 
-  document.getElementById("choice1").textContent = data[currentQuestionIndex].choices[0];
-  document.getElementById("choice2").textContent = data[currentQuestionIndex].choices[1];
-  document.getElementById("choice3").textContent = data[currentQuestionIndex].choices[2];
-  document.getElementById("choice4").textContent = data[currentQuestionIndex].choices[3];
+  document.getElementById("choice1").textContent = questionsData[currentQuestionIndex].choices[0];
+  document.getElementById("choice2").textContent = questionsData[currentQuestionIndex].choices[1];
+  document.getElementById("choice3").textContent = questionsData[currentQuestionIndex].choices[2];
+  document.getElementById("choice4").textContent = questionsData[currentQuestionIndex].choices[3];
 
-  changeBtnState();
+  scoreElement.textContent = "Score: " + score;
 }
 
 function checkAnswer(selectedOption) {
-  btnClicked = true;
-  if (selectedOption === data[currentQuestionIndex].answer) {
+  optionBtnClicked = true;
+  changeBtnState();
+
+  if (selectedOption === questionsData[currentQuestionIndex].answer) {
     score++;
+
     alert("Correct");
   } else {
-    alert(`Incorrect. The correct answer is option ${data[currentQuestionIndex].answer + 1}.`);
+    alert(`Incorrect. The correct answer is option ${questionsData[currentQuestionIndex].answer + 1}.`);
   }
   scoreElement.textContent = "Score: " + score;
 
-  changeBtnState();
 
-  if (currentQuestionIndex < data.length - 1) {
+  if (currentQuestionIndex < questionsData.length - 1) {
     currentQuestionIndex++;
   } else {
     showResult();
@@ -60,14 +64,8 @@ function nextQuestion() {
     displayQuestion();
 }
 
-function showResult() {
-  document.getElementById("main-box").style.display = "none";
-  document.getElementById("result").style.display = "block";
-  document.getElementById("finalScore").textContent = "Your Score: " + score;
-}
-
 function changeBtnState() {
-  if (btnClicked) {
+  if (optionBtnClicked) {
     // disable btn after 1 click so user cannot select one mcq multipe times
     document.getElementById("choice1").disabled = true;
     document.getElementById("choice2").disabled = true;
@@ -92,6 +90,12 @@ function changeBtnState() {
     document.getElementById("choice3").style.cursor = "pointer";
     document.getElementById("choice4").style.cursor = "pointer";
   }
+}
+
+function showResult() {
+  document.getElementById("main-box").style.display = "none";
+  document.getElementById("result").style.display = "block";
+  document.getElementById("finalScore").textContent = "Your Score: " + score;
 }
 function playAgain() {
   currentQuestionIndex = 0;
