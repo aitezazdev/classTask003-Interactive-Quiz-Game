@@ -16,42 +16,38 @@ var questionsData = [
   },
 ];
 
-var questionElement = document.getElementById("question");
 var scoreElement = document.getElementById("score");
 
 var currentQuestionIndex = 0;
 var score = 0;
-var finalScore = null;
+var finalScore = 0;
 var optionBtnClicked;
 
 function displayQuestion() {
   optionBtnClicked = false;
-  changeBtnState();
-
-  var currentQuestion = questionsData[currentQuestionIndex];
-  questionElement.textContent = currentQuestion.question;
-
+  
+  document.getElementById("question").textContent = questionsData[currentQuestionIndex].question;
+  
   document.getElementById("choice1").textContent = questionsData[currentQuestionIndex].choices[0];
   document.getElementById("choice2").textContent = questionsData[currentQuestionIndex].choices[1];
   document.getElementById("choice3").textContent = questionsData[currentQuestionIndex].choices[2];
   document.getElementById("choice4").textContent = questionsData[currentQuestionIndex].choices[3];
-
+  
   scoreElement.textContent = "Score: " + score;
+  changeBtnState();
 }
 
 function checkAnswer(selectedOption) {
   optionBtnClicked = true;
-  changeBtnState();
-
-  if (selectedOption === questionsData[currentQuestionIndex].answer) {
+  var correctAnswer = questionsData[currentQuestionIndex].answer;
+  if (selectedOption === correctAnswer) {
     score++;
-
     alert("Correct");
   } else {
-    alert(`Incorrect. The correct answer is option ${questionsData[currentQuestionIndex].answer + 1}.`);
+    alert(`Incorrect. The correct answer is option ${correctAnswer + 1}.`);
   }
   scoreElement.textContent = "Score: " + score;
-
+  changeBtnState();
 
   if (currentQuestionIndex < questionsData.length - 1) {
     currentQuestionIndex++;
@@ -62,6 +58,18 @@ function checkAnswer(selectedOption) {
 
 function nextQuestion() {
     displayQuestion();
+}
+
+function handleKeyPress(event) {
+  if (event.key === "1") {
+    checkAnswer(0);
+  } else if (event.key === "2") {
+    checkAnswer(1);
+  } else if (event.key === "3") {
+    checkAnswer(2);
+  } else if (event.key === "4") {
+    checkAnswer(3);
+  }
 }
 
 function changeBtnState() {
