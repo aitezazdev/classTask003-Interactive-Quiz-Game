@@ -21,9 +21,9 @@ var scoreElement = document.getElementById("score");
 
 var currentQuestionIndex = 0;
 var score = 0;
-var finalScore = 0;
 var answerSubmitted = false;
 
+// Displays new Question
 function displayQuestion() {
   answerSubmitted = false;
 
@@ -38,6 +38,7 @@ function displayQuestion() {
   enableButtons();
 }
 
+// For Checking Answer
 function checkAnswer(selectedOption) {
   if (answerSubmitted) return;
 
@@ -59,13 +60,16 @@ function checkAnswer(selectedOption) {
   }
 }
 
+// Next Question
 function nextQuestion() {
   displayQuestion();
 }
 
+// Handle option press with keyboard
 function handleKeyPress(event) {
-  if (answerSubmitted) return;
-
+  if (answerSubmitted) {
+    return;
+  } else {
     if (event.key === "1") {
       checkAnswer(0);
     } else if (event.key === "2") {
@@ -75,31 +79,33 @@ function handleKeyPress(event) {
     } else if (event.key === "4") {
       checkAnswer(3);
     }
+  };
   }
 
+// Disable option btns when answer is clicked
 function disableButtons() {
   for (var i = 1; i <= 4; i++) {
-    // disable btn after 1 click so user cannot select one mcq multipe times
     document.getElementById(`choice${i}`).disabled = true;
-    // cursor not allowed
     document.getElementById(`choice${i}`).style.cursor = "not-allowed";
   }
 }
 
+// enable option btns when moved to next question
 function enableButtons() {
   for (var i = 1; i <= 4; i++) {
-    // Reset all buttons to enabled
     document.getElementById(`choice${i}`).disabled = false;
-    // reset the cursor to default
     document.getElementById(`choice${i}`).style.cursor = "pointer";
   }
 }
 
+// Shows Result
 function showResult() {
   document.getElementById("main-box").style.display = "none";
   document.getElementById("result").style.display = "block";
   document.getElementById("finalScore").textContent = `YOur Score : ${score} / ${questionsData.length}`;
 }
+
+// Play Again
 function playAgain() {
   currentQuestionIndex = 0;
   score = 0;
