@@ -3,17 +3,17 @@ var questionsData = [
     question: "1. In programming, what is a 'bug'?",
     choices: ["A feature", "An error or flaw", "A security measure", "A type of loop",
     ],
-    answer: 1,
+     answerIndex: 1,
   },
   {
-    question: "2. Which planet is known as the Red Planet?",
-    choices: ["Mars", "Venus", "Jupiter", "Saturn"],
-    answer: 0,
-  },
-  {
-    question: "3. Which programming language is known as the 'language of the web'?",
+    question: "2. Which programming language is known as the 'language of the web'?",
     choices: ["Java", "Python", "C++", "JavaScript"],
-    answer: 3,
+     answerIndex: 3,
+  },
+  {
+    question: "3. What does CSS primarily control on a website?",
+    choices: ["Structure", "Content", "Styling", "Database"],
+    answerIndex: 2,
   },
 ];
 
@@ -42,7 +42,7 @@ function checkAnswer(selectedOption) {
   if (answerSubmitted) return;
 
   answerSubmitted = true;
-  var correctAnswer = questionsData[currentQuestionIndex].answer;
+  var correctAnswer = questionsData[currentQuestionIndex].answerIndex;
   if (selectedOption === correctAnswer) {
     score++;
     alert("Correct");
@@ -98,7 +98,7 @@ function enableButtons() {
 function showResult() {
   document.getElementById("main-box").style.display = "none";
   document.getElementById("result").style.display = "block";
-  document.getElementById("finalScore").textContent = "Your Score: " + score;
+  document.getElementById("finalScore").textContent = `YOur Score : ${score} / ${questionsData.length}`;
 }
 function playAgain() {
   currentQuestionIndex = 0;

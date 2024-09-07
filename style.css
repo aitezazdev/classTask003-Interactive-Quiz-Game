@@ -52,7 +52,7 @@ h1 {
     width: 48%;
     border-radius: 5px;
     border: none;
-    background-color: #4a90e2;
+    background-color: #1E90FF;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
@@ -81,12 +81,12 @@ h1 {
 }
 
 #next {
-    background-color: #4caf50;
+    background-color: #32CD32;
     cursor: pointer;
 }
 
 #next:hover {
-    background-color: #388e3c;
+    background-color: #33b333;
 }
 
 #result{
@@ -101,7 +101,7 @@ h1 {
 }
 
 #finalScore{
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
 }
 
@@ -109,7 +109,7 @@ h1 {
     padding: 10px 16px;
     font-size: 16px;
     outline: none;
-    background-color: #0d6d21;
+    background-color: #008000;
     border-style: none;
     color: #fff;
     border-radius: 4px;
@@ -118,7 +118,7 @@ h1 {
 }
 
 #play-again:hover{
-    background-color: #0e7625;
+    background-color: #069a06;
 }
 
 
