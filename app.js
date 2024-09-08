@@ -29,10 +29,14 @@ function displayQuestion() {
 
   document.getElementById("question").textContent = questionsData[currentQuestionIndex].question;
 
-  document.getElementById("choice1").textContent = questionsData[currentQuestionIndex].choices[0];
-  document.getElementById("choice2").textContent = questionsData[currentQuestionIndex].choices[1];
-  document.getElementById("choice3").textContent = questionsData[currentQuestionIndex].choices[2];
-  document.getElementById("choice4").textContent = questionsData[currentQuestionIndex].choices[3];
+  for (var i = 1; i <= 4; i++) {
+    var choiceElement = document.getElementById(`choice${i}`);
+    choiceElement.textContent = questionsData[currentQuestionIndex].choices[i-1];
+    choiceElement.style.backgroundColor = 'transparent';
+    choiceElement.style.backgroundColor = "transparent";
+    choiceElement.style.borderColor = "#3498db";
+    choiceElement.style.color = "#3498db";
+  }
 
   scoreElement.textContent = "Score: " + score;
   enableButtons();
@@ -43,12 +47,21 @@ function checkAnswer(selectedOption) {
   if (answerSubmitted) return;
 
   answerSubmitted = true;
+  
   var correctAnswer = questionsData[currentQuestionIndex].answerIndex;
+  // Always show the correct answer in greeen
+  var correctButton = document.getElementById(`choice${correctAnswer + 1}`);
+    correctButton.style.backgroundColor = "#2ecc71";
+    correctButton.style.borderColor = "#2ecc71";
+    correctButton.style.color = "#ffffff";
+
   if (selectedOption === correctAnswer) {
     score++;
-    alert("Correct");
   } else {
-    alert(`Incorrect. The correct answer is option ${correctAnswer + 1}.`);
+    var incorrectButton = document.getElementById(`choice${selectedOption + 1}`);
+        incorrectButton.style.backgroundColor = "#e74c3c";
+        incorrectButton.style.borderColor = "#e74c3c";
+        incorrectButton.style.color = "#ffffff";
   }
   scoreElement.textContent = "Score: " + score;
   disableButtons();
@@ -81,6 +94,18 @@ function handleKeyPress(event) {
     }
   };
   }
+
+function mouseOver(btn){
+  if(!answerSubmitted){
+    btn.style.backgroundColor = '#d3d3d3';
+  }
+}
+
+function mouseOut(btn){
+  if (!answerSubmitted) {
+    btn.style.backgroundColor = 'transparent';
+  }
+}
 
 // Disable option btns when answer is clicked
 function disableButtons() {

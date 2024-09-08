@@ -6,11 +6,12 @@
 }
 
 body {
-    background-color: #b3b3b3;
+    background-color: #f0f4f8;
 }
 
 header {
-    background-color: #4a90e2;
+    background-color: #3498db;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     padding: 20px 0;
     color: #fff;
     text-align: center;
@@ -52,8 +53,9 @@ h1 {
     width: 48%;
     border-radius: 5px;
     border: none;
-    background-color: #1E90FF;
-    color: #fff;
+    background-color: transparent;
+    border: 1px solid #3498db;
+    color: #3498db;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
@@ -77,16 +79,16 @@ h1 {
 }
 
 #score {
-    background-color: #ff6f61;
+    background-color: #e74c3c;
 }
 
 #next {
-    background-color: #32CD32;
+    background-color: #2ecc71;
     cursor: pointer;
 }
 
 #next:hover {
-    background-color: #33b333;
+    background-color: #27ae60;
 }
 
 #result{
@@ -97,6 +99,7 @@ h1 {
     background-color: #fff;
     border-radius: 8px;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     display: none;
 }
 
@@ -109,7 +112,7 @@ h1 {
     padding: 10px 16px;
     font-size: 16px;
     outline: none;
-    background-color: #008000;
+    background-color: #2ecc71;
     border-style: none;
     color: #fff;
     border-radius: 4px;
@@ -118,7 +121,7 @@ h1 {
 }
 
 #play-again:hover{
-    background-color: #069a06;
+    background-color: #27ae60;
 }
 
 
