@@ -51,17 +51,21 @@ function checkAnswer(selectedOption) {
   var correctAnswer = questionsData[currentQuestionIndex].answerIndex;
   // Always show the correct answer in greeen
   var correctButton = document.getElementById(`choice${correctAnswer + 1}`);
+  var textCorrectBtn = correctButton.textContent;
     correctButton.style.backgroundColor = "#2ecc71";
     correctButton.style.borderColor = "#2ecc71";
     correctButton.style.color = "#ffffff";
+    correctButton.innerHTML = textCorrectBtn + " <i class='ri-check-line'></i>";
 
   if (selectedOption === correctAnswer) {
     score++;
   } else {
     var incorrectButton = document.getElementById(`choice${selectedOption + 1}`);
+    var textIncorrectBtn = incorrectButton.textContent;
         incorrectButton.style.backgroundColor = "#e74c3c";
         incorrectButton.style.borderColor = "#e74c3c";
         incorrectButton.style.color = "#ffffff";
+        incorrectButton.innerHTML = textIncorrectBtn + " <i class='ri-close-line'></i>";
   }
   scoreElement.textContent = "Score: " + score;
   disableButtons();
@@ -69,7 +73,8 @@ function checkAnswer(selectedOption) {
   if (currentQuestionIndex < questionsData.length - 1) {
     currentQuestionIndex++;
   } else {
-    showResult();
+    document.getElementById("next").textContent = "View Score";
+    document.getElementById("next").onclick = showResult;
   }
 }
 
@@ -136,6 +141,7 @@ function playAgain() {
   score = 0;
   document.getElementById("result").style.display = "none";
   document.getElementById("main-box").style.display = "block";
+  document.getElementById("next").onclick = nextQuestion;
   displayQuestion();
 }
 
